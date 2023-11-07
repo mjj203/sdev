@@ -1,0 +1,352 @@
+{
+    "Alabama": {
+        "CODE": "AL",
+        "CAPITAL": "Montgomery",
+        "POPULATION": 196010,
+        "FLOWER": "Camellia",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Camellia_japonica_flower_2.jpg"
+    },
+    "Alaska": {
+        "CODE": "AK",
+        "CAPITAL": "Juneau",
+        "POPULATION": 31534,
+        "FLOWER": "Forget-me-not",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Forget-me-not_close_600.jpg"
+    },
+    "Arizona": {
+        "CODE": "AZ",
+        "CAPITAL": "Phoenix",
+        "POPULATION": 1651344,
+        "FLOWER": "Saguaro Cactus Blossom",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Carnegiea_gigantea_(Saguaro_cactus)_blossoms.jpg"
+    },
+    "Arkansas": {
+        "CODE": "AR",
+        "CAPITAL": "Little Rock",
+        "POPULATION": 201029,
+        "FLOWER": "Apple Blossom",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Appletree_bloom_l.jpg"
+    },
+    "California": {
+        "CODE": "CA",
+        "CAPITAL": "Sacramento",
+        "POPULATION": 528306,
+        "FLOWER": "California Poppy",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/California_poppy.jpg"
+    },
+    "Colorado": {
+        "CODE": "CO",
+        "CAPITAL": "Denver",
+        "POPULATION": 699288,
+        "FLOWER": "Rocky Mountain Columbine",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Aquilegia_caerulea.jpg"
+    },
+    "Connecticut": {
+        "CODE": "CT",
+        "CAPITAL": "Hartford",
+        "POPULATION": 119817,
+        "FLOWER": "Mountain Laurel",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Kalmia_latifolia2.jpg"
+    },
+    "Delaware": {
+        "CODE": "DE",
+        "CAPITAL": "Dover",
+        "POPULATION": 37892,
+        "FLOWER": "Peach Blossom",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Peach_flowers.jpg"
+    },
+    "Florida": {
+        "CODE": "FL",
+        "CAPITAL": "Tallahassee",
+        "POPULATION": 198631,
+        "FLOWER": "Orange Blossom",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/OrangeBloss_wb.jpg"
+    },
+    "Georgia": {
+        "CODE": "GA",
+        "CAPITAL": "Atlanta",
+        "POPULATION": 490270,
+        "FLOWER": "Cherokee Rose",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Cherokee_rose.jpg"
+    },
+    "Hawaii": {
+        "CODE": "HI",
+        "CAPITAL": "Honolulu",
+        "POPULATION": 337088,
+        "FLOWER": "Hibiscus",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Maohauhele.jpg"
+    },
+    "Idaho": {
+        "CODE": "ID",
+        "CAPITAL": "Boise",
+        "POPULATION": 240713,
+        "FLOWER": "Syringa",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Lewis%27s_Mock-orange_NFUW_-_Umatilla_NF_Oregon.jpg"
+    },
+    "Illinois": {
+        "CODE": "IL",
+        "CAPITAL": "Springfield",
+        "POPULATION": 111711,
+        "FLOWER": "Violet",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Viola_sororia.jpg"
+    },
+    "Indiana": {
+        "CODE": "IN",
+        "CAPITAL": "Indianapolis",
+        "POPULATION": 871449,
+        "FLOWER": "Peony",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Paeonia_19.jpg"
+    },
+    "Iowa": {
+        "CODE": "IA",
+        "CAPITAL": "Des Moines",
+        "POPULATION": 208734,
+        "FLOWER": "Wild Rose",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Rosa_arkansana.jpg"
+    },
+    "Kansas": {
+        "CODE": "KS",
+        "CAPITAL": "Topeka",
+        "POPULATION": 125353,
+        "FLOWER": "Sunflower",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/A_sunflower.jpg"
+    },
+    "Kentucky": {
+        "CODE": "KY",
+        "CAPITAL": "Frankfort",
+        "POPULATION": 28523,
+        "FLOWER": "Goldenrod",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Solidago_virgaurea_minuta0.jpg"
+    },
+    "Louisiana": {
+        "CODE": "LA",
+        "CAPITAL": "Baton Rouge",
+        "POPULATION": 217665,
+        "FLOWER": "Magnolia",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Magnolia_flower_Duke_campus.jpg"
+    },
+    "Maine": {
+        "CODE": "ME",
+        "CAPITAL": "Augusta",
+        "POPULATION": 19058,
+        "FLOWER": "White Pine",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Pinus_strobus_cones.JPG"
+    },
+    "Maryland": {
+        "CODE": "MD",
+        "CAPITAL": "Annapolis",
+        "POPULATION": 40397,
+        "FLOWER": "Black-eyed Susan",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Rudbeckia_hirta_Indian_Summer.JPG"
+    },
+    "Massachusett": {
+        "CODE": "MA",
+        "CAPITAL": "Boston",
+        "POPULATION": 617459,
+        "FLOWER": "Mayflower",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Trailing_arbutus.jpg"
+    },
+    "Michigan": {
+        "CODE": "MI",
+        "CAPITAL": "Lansing",
+        "POPULATION": 112460,
+        "FLOWER": "Apple Blossom",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Appletree_bloom_l.jpg"
+    },
+    "Minnesota": {
+        "CODE": "MN",
+        "CAPITAL": "St. Paul",
+        "POPULATION": 299830,
+        "FLOWER": "Pink and White Lady's Slipper",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Cypripedium_reginae_Orchi_004.jpg"
+    },
+    "Mississippi": {
+        "CODE": "MS",
+        "CAPITAL": "Jackson",
+        "POPULATION": 143776,
+        "FLOWER": "Magnolia",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Magnolia_flower_Duke_campus.jpg"
+    },
+    "Missouri": {
+        "CODE": "MO",
+        "CAPITAL": "Jefferson City",
+        "POPULATION": 42535,
+        "FLOWER": "Hawthorn",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/(MHNT)_Crataegus_monogyna_-_flowers_and_buds.jpg"
+    },
+    "Montana": {
+        "CODE": "MT",
+        "CAPITAL": "Helena",
+        "POPULATION": 34690,
+        "FLOWER": "Bitterroot",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Lewisia_rediviva_4.jpg"
+    },
+    "Nebraska": {
+        "CODE": "NE",
+        "CAPITAL": "Lincoln",
+        "POPULATION": 295222,
+        "FLOWER": "Goldenrod",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Solidago_virgaurea_minuta0.jpg"
+    },
+    "Nevada": {
+        "CODE": "NV",
+        "CAPITAL": "Carson City",
+        "POPULATION": 59630,
+        "FLOWER": "Sagebrush",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Sagebrush.jpg"
+    },
+    "New Hampshi": {
+        "CODE": "NH",
+        "CAPITAL": "Concord",
+        "POPULATION": 44606,
+        "FLOWER": "Purple Lilac",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Lilac_(2).jpg"
+    },
+    "New Jersey": {
+        "CODE": "NJ",
+        "CAPITAL": "Trenton",
+        "POPULATION": 90048,
+        "FLOWER": "Purple Violet",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Viola_sororia.jpg"
+    },
+    "New Mexico": {
+        "CODE": "NM",
+        "CAPITAL": "Santa Fe",
+        "POPULATION": 89220,
+        "FLOWER": "Yucca",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Yucca_filamentosa.jpg"
+    },
+    "New York": {
+        "CODE": "NY",
+        "CAPITAL": "Albany",
+        "POPULATION": 97593,
+        "FLOWER": "Rose",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Rosa_sp.163.jpg"
+    },
+    "North Carolin": {
+        "CODE": "NC",
+        "CAPITAL": "Raleigh",
+        "POPULATION": 472540,
+        "FLOWER": "Dogwood",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Flowering_Dogwood_Cornus_florida_Yellow_Flowers_3008px.JPG"
+    },
+    "North Dakota": {
+        "CODE": "ND",
+        "CAPITAL": "Bismarck",
+        "POPULATION": 75073,
+        "FLOWER": "Wild Prairie Rose",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Rosa_arkansana.jpg"
+    },
+    "Ohio": {
+        "CODE": "OH",
+        "CAPITAL": "Columbus",
+        "POPULATION": 907865,
+        "FLOWER": "Scarlet Carnation",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Red_Carnation_NGM_XXXI_p507.jpg"
+    },
+    "Oklahoma": {
+        "CODE": "OK",
+        "CAPITAL": "Oklahoma City",
+        "POPULATION": 697763,
+        "FLOWER": "Oklahoma Rose",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Rose,_Oklahoma_-_Flickr_-_nekonomania.jpg"
+    },
+    "Oregon": {
+        "CODE": "OR",
+        "CAPITAL": "Salem",
+        "POPULATION": 181620,
+        "FLOWER": "Oregon Grape",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/(MHNT)_Berberis_aquifolium_inflorecences_and_buds.jpg"
+    },
+    "Pennsylvania": {
+        "CODE": "PA",
+        "CAPITAL": "Harrisburg",
+        "POPULATION": 50267,
+        "FLOWER": "Mountain Laurel",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Kalmia_latifolia2.jpg"
+    },
+    "Rhode Island": {
+        "CODE": "RI",
+        "CAPITAL": "Providence",
+        "POPULATION": 188877,
+        "FLOWER": "Violet",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Viola_sororia.jpg"
+    },
+    "South Carolin": {
+        "CODE": "SC",
+        "CAPITAL": "Columbia",
+        "POPULATION": 137996,
+        "FLOWER": "Yellow Jessamine",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Gelsemium_sempervirensCDP140CA.jpg"
+    },
+    "South Dakota": {
+        "CODE": "SD",
+        "CAPITAL": "Pierre",
+        "POPULATION": 13954,
+        "FLOWER": "Pasque Flower",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Pulsatilla_vulgaris-700px.jpg"
+    },
+    "Tennessee": {
+        "CODE": "TN",
+        "CAPITAL": "Nashville",
+        "POPULATION": 658525,
+        "FLOWER": "Iris",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Iris_%27Gene_Wild%27_2007-05-13_383.jpg"
+    },
+    "Texas": {
+        "CODE": "TX",
+        "CAPITAL": "Austin",
+        "POPULATION": 966292,
+        "FLOWER": "Bluebonnet",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Texas_Bluebonnet_(Lupinus_texensis).jpg"
+    },
+    "Utah": {
+        "CODE": "UT",
+        "CAPITAL": "Salt Lake City",
+        "POPULATION": 202272,
+        "FLOWER": "Sego Lily",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Sego_lily_cm.jpg"
+    },
+    "Vermont": {
+        "CODE": "VT",
+        "CAPITAL": "Montpelier",
+        "POPULATION": 7988,
+        "FLOWER": "Red Clover",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Red_clover_closeup.jpg"
+    },
+    "Virginia": {
+        "CODE": "VA",
+        "CAPITAL": "Richmond",
+        "POPULATION": 226472,
+        "FLOWER": "American Dogwood",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Benthamidia_florida2.jpg"
+    },
+    "Washington": {
+        "CODE": "WA",
+        "CAPITAL": "Olympia",
+        "POPULATION": 56510,
+        "FLOWER": "Western Rhododendron",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Rhododendron_macrophyllum.JPG"
+    },
+    "West Virginia": {
+        "CODE": "WV",
+        "CAPITAL": "Charleston",
+        "POPULATION": 46692,
+        "FLOWER": "Rhododendron",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Rhododendron-by-eiffel-public-domain-20040617.jpg"
+    },
+    "Wisconsin": {
+        "CODE": "WI",
+        "CAPITAL": "Madison",
+        "POPULATION": 269897,
+        "FLOWER": "Wood Violet",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Viola_sororia.jpg"
+    },
+    "Wyoming": {
+        "CODE": "WY",
+        "CAPITAL": "Cheyenne",
+        "POPULATION": 64831,
+        "FLOWER": "Indian Paintbrush",
+        "URL": "https://upload.wikimedia.org/wikipedia/commons/Indian_Paintbrush_in_Grand_Teton_NP-NPS.jpg"
+    }
+}
