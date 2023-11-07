@@ -1,4 +1,24 @@
-"""This script provides functionalities to manage and display US states data."""
+"""
+This module provides tools for managing and displaying information about U.S. states.
+It includes functionalities to read state data, validate the data integrity, update
+state details, display state-related statistics, and interact with users through a
+command-line interface.
+
+Functions include:
+- Reading and converting state data from CSV to JSON.
+- Validating state data for completeness and correct data type.
+- Displaying state details like capital, population, and state flower.
+- Plotting population statistics in a bar graph.
+- Updating state information based on user input.
+- Handling user interactions in a menu-driven approach.
+
+The module is designed to be run as a script, offering a user-friendly interface
+for exploring and manipulating U.S. states data.
+
+Note:
+    The module relies on external libraries like 'matplotlib' for graphing and
+    'requests' for network operations.
+"""
 
 import sys
 from io import BytesIO
@@ -363,19 +383,15 @@ STATE_CODE_LOOKUP = {details["CODE"]: state for state, details in STATES.items()
 
 
 def validate_states_data():
-    """Validates the data of each state in the global STATES dictionary.
+    """
+    Validate the data of each state in the global STATES dictionary.
 
-    This function checks two aspects for each state:
-    1. Presence of all required keys (CAPITAL, POPULATION, FLOWER, URL).
-    2. The data type of the POPULATION key, ensuring it's an integer.
+    This function checks for the presence of all required keys (CAPITAL, POPULATION,
+    FLOWER, URL) and the data type of the POPULATION key, ensuring it's an integer.
 
     Returns:
-        bool: True if all states have the required keys and correct data types, False otherwise.
-
-    Prints an error message and returns False if:
-    - A state is missing one or more required keys.
-    - The population value is not an integer.
-    - A KeyError is encountered in the STATES data."""
+        bool: True if data is valid, False otherwise, with an error message printed.
+    """
     required_keys = {"CAPITAL", "POPULATION", "FLOWER", "URL"}
     try:
         for state, details in STATES.items():
@@ -398,11 +414,12 @@ def validate_states_data():
 
 
 def display_states():
-    """For each state, the function prints its name, capital, population (formatted with commas),
-    and the state flower. The states are displayed in alphabetical order.
+    """
+    Display name, capital, population, and flower of each state in alphabetical order.
 
     Exceptions:
-        KeyError: If a required key is missing in the state's data, an error message is printed."""
+        KeyError: Prints an error message if a required key is missing.
+    """
     try:
         for state, details in sorted(STATES.items()):
             formatted_population = f"{details['POPULATION']:,}"
@@ -415,17 +432,15 @@ def display_states():
 
 
 def get_state_name_from_code(code):
-    """The function looks up the state code in the global STATE_CODE_LOOKUP dictionary
-    and returns the corresponding state name.
+    """
+    Retrieve the state name corresponding to a two-letter state code.
 
     Args:
-        code (str): The two-letter state code to look up.
+        code (str): The two-letter state code.
 
     Returns:
-        str: The name of the state corresponding to the provided code, or None if
-        the code is not found.
-
-    Prints an error message if the state code is not found in the STATE_CODE_LOOKUP dictionary."""
+        str: State name or None if code is not found, with an error message printed.
+    """
     try:
         return STATE_CODE_LOOKUP[code.upper()]
     except KeyError:
@@ -433,18 +448,15 @@ def get_state_name_from_code(code):
         return None
 
 def search_state():
-    """This function prompts the user to enter either a state name or a two-letter state code. 
-    It then looks up and displays the state's capital, population (formatted with commas), 
-    and state flower. If the input is a two-letter code, it uses the get_state_name_from_code 
-    function to find the corresponding state name.
+    """
+    Search and display details of a state based on user input (name or code).
 
-    If the state or state code is not found in the STATES dictionary, an appropriate 
-    message is printed. The function also attempts to display an image of the state's flower 
-    if the state is found.
+    The function handles state lookup, details display, and attempts to display
+    an image of the state's flower.
 
     Exceptions:
-        Any exception is caught and an error message is printed, indicating an issue during 
-        the search or data retrieval process."""
+        General exception: Prints an error message for search or data retrieval issues.
+    """
     try:
         identifier = input("Enter state name or 2-letter code: ").strip()
 
@@ -475,15 +487,12 @@ def search_state():
 
 
 def display_population_graph():
-    """This function sorts the states based on their population (in descending order)
-    and selects the top 5. It then plots a bar graph showing these states and their 
-    respective population values.
-
-    The population data is expected to be integers in the STATES dictionary.
+    """
+    Display a bar graph of the top 5 most populated states.
 
     Exceptions:
-        ValueError: Raised and caught if there's an issue with the population data, 
-                    such as incorrect formatting or data type."""
+        ValueError: Handles incorrect population data formatting or type.
+    """
     try:
         # Sorting states based on population, which is already an integer
         top_states = sorted(
@@ -503,20 +512,17 @@ def display_population_graph():
 
 
 def safe_update_state(state_name, key, value):
-    """This function attempts to update the value of a specified key for a given state. 
-    If the specified key or state does not exist in the STATES dictionary, a KeyError 
-    is caught and handled.
+    """
+    Update the value of a specified key for a given state in the STATES dictionary.
 
     Args:
-        state_name (str): The name of the state to be updated.
-        key (str): The key in the state's dictionary to be updated (e.g., 'CAPITAL', 'POPULATION').
-        value: The new value to assign to the specified key.
+        state_name (str): Name of the state.
+        key (str): Key to be updated (e.g., 'CAPITAL', 'POPULATION').
+        value: New value for the specified key.
 
     Returns:
-        bool: True if the update is successful, False if a KeyError is encountered.
-
-    Raises:
-        KeyError: If the specified state or key is not found in the STATES dictionary."""
+        bool: True if successful, False with an error message if KeyError occurs.
+    """
     try:
         STATES[state_name][key] = value
     except KeyError as e:
@@ -526,24 +532,19 @@ def safe_update_state(state_name, key, value):
 
 
 def add_or_update_state(state_name, **kwargs):
-    """This function allows updating various attributes (like capital, population, flower,
-    and URL) of a specified state. The updates are performed using a dictionary of lambda
-    functions, each corresponding to a different attribute. If the specified state does not
-    exist in the STATES dictionary, an error message is printed.
+    """
+    Update various attributes of a specified state.
 
     Args:
-        state_name (str): The name of the state to be updated.
-        **kwargs: Variable keyword arguments representing the attributes to be updated
-        and their new values. For example, population=500000 would update the
-        'POPULATION' attribute.
+        state_name (str): Name of the state to be updated.
+        **kwargs: Attributes to be updated and their new values.
 
     Returns:
-        bool: True if all updates are successful and the states data is valid post-update,
-        False otherwise.
+        bool: True if updates successful and data valid, False otherwise.
 
     Note:
-        The function utilizes 'safe_update_state' for the actual update process and
-        validates the entire STATES data after the updates using 'validate_states_data'."""
+        Utilizes 'safe_update_state' and 'validate_states_data'.
+    """
     if state_name not in STATES:
         print(f"State '{state_name}' does not exist.")
         return False
@@ -568,20 +569,15 @@ def add_or_update_state(state_name, **kwargs):
 
 
 def update_population():
-    """This function prompts the user to enter either a state name or its two-letter code.
-    It then requests the new population value for that state. If the entered identifier
-    is a two-letter code, it uses 'get_state_name_from_code' to find the corresponding 
-    state name. The population is updated only if the state exists in STATES.
+    """
+    Prompt user for a state and update its population.
 
-    The function checks the validity of the new population input, ensuring it's a numeric value.
-    If the new population is valid, it is updated in the STATES dictionary.
+    Requests new population value and updates if valid. Handles state lookup and
+    input validation.
 
     Exceptions:
-        ValueError: Raised and handled if the entered population is not a valid numeric value.
-
-    Prints:
-        A message indicating whether the population update was successful or not.
-        Error messages for invalid inputs or if the state is not found."""
+        ValueError: Handles invalid numeric input for population.
+    """
     identifier = input("Enter state name or 2-letter code: ").strip()
     state_name = (
         get_state_name_from_code(identifier)
@@ -608,17 +604,15 @@ def update_population():
 
 
 def display_state_flower_image(state_name):
-    """Given a state name, the function fetches the image URL from the global STATES dictionary
-    and attempts to download and display the image. It handles various exceptions such as 
-    failure to download the image or if the image cannot be opened.
+    """
+    Display the image of a state's flower given its name.
 
     Args:
-        state_name (str): The name of the state for which the flower image will be displayed.
+        state_name (str): Name of the state.
 
     Prints:
-        A message indicating the reason for any failure in displaying the image, such as
-        network errors, invalid URLs, or corrupted image files.
-        An error message if the specified state is not found in the STATES dictionary."""
+        Error messages for failed image display or if state not found.
+    """
     if state_name in STATES:
         url = STATES[state_name]["URL"]
         try:
@@ -647,25 +641,25 @@ def display_state_flower_image(state_name):
 
 
 def exit_program():
-    """This function prints a farewell message and then terminates the execution of the program.
-    It uses the built-in 'exit' function to stop the program."""
+    """
+    Print a farewell message and terminate the program execution.
+    """
     print("Exiting the program. Goodbye!")
     sys.exit()
 
 
 def main():
-    """This function presents a menu of options to the user, allowing them to interact with 
-    the U.S. States Information system. It supports displaying state details, searching 
-    for a state, showing a population graph, updating state population, and exiting the program.
+    """
+    Present a menu to interact with the U.S. States Information system.
 
-    The user's choice is processed and the corresponding function is executed. The program 
-    continues to display the menu and accept input until the user chooses to exit. The function 
-    handles various exceptions related to invalid input and network issues.
+    Supports various operations like displaying state details, searching for a state,
+    showing population graph, updating state population, and exiting.
 
     Exceptions:
-        ValueError: Raised and caught if there's an invalid input for number format.
-        requests.exceptions.RequestException: Caught if there's a network error during a request.
-        KeyboardInterrupt: Caught when the user interrupts the program execution (e.g., Ctrl+C)."""
+        ValueError: Handles invalid number format for input.
+        requests.exceptions.RequestException: Handles network errors.
+        KeyboardInterrupt: Handles program interruption by the user.
+    """
     options = {
         "1": display_states,
         "2": search_state,
