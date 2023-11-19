@@ -1,0 +1,13 @@
+After completing these activities, you should be able to do the following:
+
+Use the Python Pandas module for input from a csv file.
+Use Pandas for input validation and data munging.
+Use bandit to analyze code for security vulnerabilities.
+
+For this week, read PDF - Byte-of-Python:
+1.15 Input and Output
+1.16 Exceptions
+
+https://github.com/PyCQA/bandit
+https://bandit.readthedocs.io/en/latest/
+bandit -r ~/your_repos/project

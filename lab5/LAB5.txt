@@ -1,0 +1,35 @@
+allows a user to load one of two CSV files and then perform histogram analysis and plots for select variables on the datasets. The first dataset represents the population change for specific dates for U.S. regions. The second dataset represents Housing data over an extended period of time describing home age, number of bedrooms and other variables. The first row provides a column name for each dataset. The following columns should be used to perform analysis:
+
+• PopChange.csv:
+• Pop Apr 1
+• Pop Jul 1
+• Change Pop
+
+Housing.csv:
+• AGE
+• BEDRMS
+• BUILT
+• ROOMS
+• UTILITY
+
+Notice for the Housing CSV file, there are more columns in the file than are required to be analyzed. You can and should still load each column.
+
+Specific statistics should include:
+
+• Count
+• Mean
+• Standard Deviation
+• Min
+• Max
+• Histogram
+
+Hints:
+
+1. Use the Pandas, Numpy, MatplotLib and other Python modules when appropriate.
+2. Be sure to install the required Python modules in your environment before you import or try to use them in your code. For example, pip install each of the required modules that are external Python libraries that you need.
+3. If an inappropriate entry is detected, the program should prompt for a correct value and continue to do so until a correct value is entered.
+4. Use comments to document your code
+5. Test with many combinations.
+6. Use pylint to verify the code style – the goal is a 10!
+7. The user Interface should continue to run until the user indicates they are ready to exit.
+8. Be sure to review the previous readings and modules as you may need to use statistics and other modules to complete this lab.
