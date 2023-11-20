@@ -1,32 +1,54 @@
-You can run bandit using this syntax at the shell:
-
-bandit -r path/to/file/
-
-where path/to/file/ is the location of your files.
-
-For this exercise, place your python code from the previous labs from this class into a folder of your choice and run the bandit analysis.
-
-For example, if I placed my python files in c:/users/jim/SDEVFiles, I would use the following to run bandit and output the results to a filenamed myVulns.txt
-
-bandit -r C:/Users/jim/SDEVFiles > myVulns.txt
-
-You can then open myVulns.txt to reveal possible issues.
-
 Share your output with the class and pick one vulnerability and research how you could fix it.
 If you don't have any vulnerabilities, look at another student's submitted file and provide some insights into the findings.
 
-Discuss the findings with at least one other student providing additional insight and analysis.
-
-Select the button below to access the thread.
 
 
+I ran both bandit and snyk on my sdev git project and bandit only found 1 security issue within my password_generator.py
+script within the hash_password() function related to MD5 being a weak algorithm. Snyk found the same issue, but listed it has a low
+priority compared to bandit listing it as a high. The has_password() function provides multiple algorithm choices up to one of the most
+secure (argon2id), so the fix is already implemented as can be seen from the snippet below.
+
+```
+def hash_password(password, algorithm):
+    """
+    Hashes a password using the specified cryptographic hash function.
+
+    :param password: The password to be hashed.
+    :param algorithm: A string indicating the hash function to use
+    (md5, sha256, sha512, bcrypt, scrypt, argon2id).
+    
+    :return: A string representing the hashed password.
+    :raises ValueError: If an invalid hashing algorithm is provided.
+    """
+    if algorithm == "md5":
+        return hashlib.md5(password.encode()).hexdigest()
+    if algorithm == "sha256":
+        return hashlib.sha256(password.encode()).hexdigest()
+    if algorithm == "sha512":
+        return hashlib.sha512(password.encode()).hexdigest()
+    if algorithm == "bcrypt":
+        return bcrypt.hash(password)
+    if algorithm == "scrypt":
+        return scrypt.hash(password)
+    if algorithm == "argon2id":
+        return argon2.using(type="ID").hash(password)
+
+    raise ValueError("Invalid hashing algorithm")
+```
+
+Instead I chose to fix the "Path Traversal" security flaw found by snyk in my csv2dict.py script after reading more about the attack vector.
+A path traversal attack allows an attacker to write an arbitrary file, where in my script it read a CSV file and converts it to a JSON. In the
+script both filenames are passed as input from the user without sanitizing or validating the input file names before using them. This can allow
+an attacker to potentially provide a file path that leads to a sensitive location on the system. For example, an attacker could provide a JSON
+file name like ../../../etc/passwd, which could overwrite a critical system file if the script has sufficient permissions. To mitigate this attack
+vector I added a function called sanitize_filename() to sanitize the input filenames (csv_filename and json_filename). The function works by removing
+directory traversal characters like ../ or ..\\, and explicitly checking for and rejecting file paths that refer to sensitive locations on a linux system
+(`/etc`, `/root`) or sensitive files starting with `.` like `.git-credentials` in a users home directory. This approach ensures the script does not
+inadvertently access or modify sensitive files or directories, which is a crucial aspect of securing file handling operations in any application.
 
 
-⚠️ Medium Severity | Path Traversal | Priority Score 534 | Vulnerability: CWE-23
-Unsanitized input from a command line argument[:99] flows[:99, :99, :99, :100, :47, :90, :90, :90, :91] into json.dump[], where it is used as a path.
-This may result in a Path Traversal vulnerability and allow an attacker to write arbitrary files.
-
-Details
+PATH/DIRECTORY TRAVERSAL DEFINITION:
+```
 A Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder
  By manipulating files with "dot-dot-slash (../)" sequences and its variations, or by using absolute file paths, it may be possible to access
  arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.
@@ -41,60 +63,4 @@ One way to achieve this is by using a malicious zip archive that holds path trav
 gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder.
 If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary
 code execution issue quite easily.
-
-The following is an example of a zip archive with one benign file and one malicious file.
-Extracting the malicious file will result in traversing out of the target folder,
-ending up in /root/.ssh/ overwriting the authorized_keys file:
-
-2018-04-15 22:04:29 .....           19           19  good.txt
-2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys
-
-
-
-
-
-The code snippet you provided reads data from a CSV file, processes it, and then writes it to a JSON file.
-The names of both the CSV and JSON files are provided as command line arguments.
-
-The potential Path Traversal vulnerability here is that the script does not sanitize or validate the input file names before using them.
-This means that an attacker could potentially provide a file path that leads to a sensitive location on the system.
-For example, an attacker could provide a JSON file name like ../../../etc/passwd, which could overwrite a critical system file if the script has sufficient permissions.
-
-To mitigate this, you should validate and sanitize the input file names.
-One simple way to do this is to check if the file name contains any directory traversal sequences like ../ or ..\\.
-If it does, you can either reject the input or remove these sequences.
-
-import os
-import sys
-
-def sanitize_filename(filename):
-    return os.path.basename(filename)
-
-if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python script.py <csv_filename> <json_filename>")
-        sys.exit(1)
-
-    csv_filename = sanitize_filename(sys.argv[1])
-    json_filename = sanitize_filename(sys.argv[2])
-    read_states_csv_to_json(csv_filename, json_filename)
-
-
-
-
-
-
-⬇️ Low Severity | Use of Password Hash With Insufficient Computational Effort | Priority Score 384 | Vulnerability: CWE-916
-hashlib.md5 is insecure. Consider changing it to a secure hashing algorithm.
-
-Details
-Sensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.
-
-Hashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.
-
-Best practices for prevention
-Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.
-Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.
-Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).
-Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.
-Increase developer awareness of current standards in data security and cryptography.
+```

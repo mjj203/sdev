@@ -48,11 +48,11 @@ def hash_password(password, algorithm):
     :raises ValueError: If an invalid hashing algorithm is provided.
     """
     if algorithm == "md5":
-        return hashlib.md5(password.encode()).hexdigest()
+        return hashlib.md5(password.encode(), usedforsecurity=False).hexdigest()
     if algorithm == "sha256":
-        return hashlib.sha256(password.encode()).hexdigest()
+        return hashlib.sha256(password.encode(), usedforsecurity=False).hexdigest()
     if algorithm == "sha512":
-        return hashlib.sha512(password.encode()).hexdigest()
+        return hashlib.sha512(password.encode(), usedforsecurity=False).hexdigest()
     if algorithm == "bcrypt":
         return bcrypt.hash(password)
     if algorithm == "scrypt":

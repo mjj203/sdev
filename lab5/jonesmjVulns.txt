@@ -36,15 +36,11 @@ Files skipped (0):
 
 SNYK SAST
 
-Testing /Users/michaeljones/Git/SDEV300/sdev ...
+Testing /Users/michaeljones/Git/sdev ...
 
  ✗ [Low] Use of Password Hash With Insufficient Computational Effort 
    Path: lab4/password_generator.py, line 51 
    Info: hashlib.md5 is insecure. Consider changing it to a secure hashing algorithm.
-
- ✗ [Medium] Server-Side Request Forgery (SSRF) 
-   Path: lab3/state_search.py, line 634 
-   Info: Unsanitized input from user input flows into requests.get, where it is used as an URL to perform a request. This may result in a Server Side Request Forgery vulnerability.
 
  ✗ [Medium] Path Traversal 
    Path: lab3/csv2dict.py, line 91 
@@ -55,11 +51,11 @@ Testing /Users/michaeljones/Git/SDEV300/sdev ...
 
 Organization:      jonesusmc84.mj
 Test type:         Static code analysis
-Project path:      /Users/michaeljones/Git/SDEV300/sdev
+Project path:      /Users/michaeljones/Git/sdev
 
 Summary:
 
-  3 Code issues found
-  2 [Medium]   1 [Low] 
+  2 Code issues found
+  1 [Medium]   1 [Low] 
 
 

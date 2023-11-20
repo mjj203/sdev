@@ -36,35 +36,47 @@ import datetime
 import math
 import secrets
 import string
+from typing import Optional
 
+def generate_password() -> None:
+    """
+    Generate a random password based on user-defined criteria.
 
-def generate_password():
-    """function creates a password based on the specified length and complexity.
-    The user is prompted to enter their desired password length and specify
-    the types of characters they want to include."""
+    This function prompts the user to specify the length of the password and
+    whether to include uppercase letters, lowercase letters, numbers, and
+    special characters. It then generates a password of the specified length
+    and complexity.
+    """
     try:
-        length = int(input("Enter the length of the password: "))
-        print("Select the complexity of the password (Type 'yes' or 'no' for each):")
-        options = {
-            'uppercase letters': string.ascii_uppercase,
-            'lowercase letters': string.ascii_lowercase,
-            'numbers': string.digits,
-            'special characters': string.punctuation
-        }
-
-        characters = "".join(
-            chars for option, chars in options.items() if input(f"Use {option}? ").lower() == 'yes'
-            )
-
-        if not characters:
+        password_length = get_password_length()
+        character_set = get_character_set()
+        if not character_set:
             print("Please select at least one type of character for your password.")
             return
 
-        password = ''.join(secrets.choice(characters) for _ in range(length))
+        password = ''.join(secrets.choice(character_set) for _ in range(password_length))
         print("Generated Password:", password)
     except ValueError:
         print("Invalid input! Please enter an integer for the password length.")
 
+def get_password_length() -> int:
+    """Prompt the user for the password length and return it."""
+    return int(input("Enter the length of the password: "))
+
+def get_character_set() -> Optional[str]:
+    """Prompt the user to select character types and return the combined character set."""
+    print("Select the complexity of the password (Type 'yes' or 'no' for each):")
+    options = {
+        'uppercase letters': string.ascii_uppercase,
+        'lowercase letters': string.ascii_lowercase,
+        'numbers': string.digits,
+        'special characters': string.punctuation
+    }
+
+    return "".join(
+        chars for option, chars in options.items()
+        if input(f"Use {option}? ").lower() == 'yes'
+    )
 
 def calculate_percentage():
     """This function calculates the percentage by dividing the numerator by the denominator,

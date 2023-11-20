@@ -628,31 +628,32 @@ def display_state_flower_image(state_name):
     Prints:
         Error messages for failed image display or if state not found.
     """
-    if state_name in STATES:
-        url = STATES[state_name]["URL"]
-        try:
-            response = requests.get(url, timeout=10)
-            if response.status_code == 200:
-                # Try to open the image
-                try:
-                    img = Image.open(BytesIO(response.content))
-                    plt.imshow(img)
-                    plt.axis("off")  # Turn off axis numbers
-                    plt.show()
-                except IOError:
-                    print(
-                        f"Failed to open the image from {url}. "
-                        f"The file may not be an image or might be corrupted."
-                    )
-            else:
-                print(
-                    f"Failed to download the image from {url}. "
-                    f"HTTP status code: {response.status_code}"
-                )
-        except requests.exceptions.RequestException:
-            print(f"Failed to download the image from {url} due to a network error.")
-    else:
+    # Validate input
+    if state_name not in STATES:
         print(f"State '{state_name}' not found.")
+        return
+
+    url = STATES[state_name]["URL"]
+
+    # Ensure the URL is safe (e.g., starts with http:// or https://)
+    if not url.startswith(("http://", "https://")):
+        print(f"Invalid URL for state '{state_name}'.")
+        return
+
+    try:
+        response = requests.get(url, timeout=10)
+        if response.status_code == 200:
+            try:
+                img = Image.open(BytesIO(response.content))
+                plt.imshow(img)
+                plt.axis("off")  # Turn off axis numbers
+                plt.show()
+            except IOError:
+                print(f"Failed to open the image from {url}. The file may not be an image or might be corrupted.")
+        else:
+            print(f"Failed to download the image from {url}. HTTP status code: {response.status_code}")
+    except requests.exceptions.RequestException:
+        print(f"Failed to download the image from {url} due to a network error.")
 
 
 def exit_program():
