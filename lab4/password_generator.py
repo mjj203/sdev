@@ -46,21 +46,30 @@ def hash_password(password, algorithm):
     
     :return: A string representing the hashed password.
     :raises ValueError: If an invalid hashing algorithm is provided.
+    :raises TypeError: If the input data is of the wrong type.
+    :raises Exception: For specific hashing library exceptions.
     """
-    if algorithm == "md5":
-        return hashlib.md5(password.encode(), usedforsecurity=False).hexdigest()
-    if algorithm == "sha256":
-        return hashlib.sha256(password.encode(), usedforsecurity=False).hexdigest()
-    if algorithm == "sha512":
-        return hashlib.sha512(password.encode(), usedforsecurity=False).hexdigest()
-    if algorithm == "bcrypt":
-        return bcrypt.hash(password)
-    if algorithm == "scrypt":
-        return scrypt.hash(password)
-    if algorithm == "argon2id":
-        return argon2.using(type="ID").hash(password)
 
-    raise ValueError("Invalid hashing algorithm")
+    options = {
+        "md5": lambda pwd: hashlib.md5(pwd.encode(), usedforsecurity=False).hexdigest(),
+        "sha256": lambda pwd: hashlib.sha256(pwd.encode(), usedforsecurity=False).hexdigest(),
+        "sha512": lambda pwd: hashlib.sha512(pwd.encode(), usedforsecurity=False).hexdigest(),
+        "bcrypt": lambda pwd: bcrypt.hash(pwd),
+        "scrypt": lambda pwd: scrypt.hash(pwd),
+        "argon2id": lambda pwd: argon2.using(type="ID").hash(pwd)
+    }
+
+    try:
+        hash_function = options.get(algorithm)
+        if hash_function is None:
+            raise ValueError("Invalid hashing algorithm")
+        return hash_function(password)
+    except (TypeError, ValueError) as e:
+        raise ValueError(f"Hashing error due to input: {str(e)}")
+    except (bcrypt.exceptions.BcryptError, 
+            scrypt.error, 
+            argon2.exceptions.Argon2Error) as e:
+        raise Exception(f"Error in hashing library: {str(e)}")
 
 
 def main():
