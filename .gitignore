@@ -6,3 +6,4 @@
 */.mypy_cache/
 .dc*
 */.dc*
+*/.mypy_cache/
