@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demon Slayer Characters</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to Demon Slayer Characters</h1>
+    <p>This is a fan site for the anime Demon Slayer.</p>
+
+    <!-- Navigation Section -->
+    <nav>
+        <ul>
+            <li><a href="/overview">Demon Slayer Overview</a></li>
+            <li><a href="/hashira">The Hashira</a></li>
+            <li><a href="/demon">The Demon</a></li>
+            <!-- Adding Login and Register Links -->
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+        </ul>
+    </nav>
+
+    <p>Current time: {{ current_time }}</p>
+</body>
+</html>

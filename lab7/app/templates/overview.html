@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demon Slayer Overview</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Demon Slayer: Kimetsu no Yaiba</h1>
+    <p><em>Demon Slayer: Kimetsu no Yaiba</em> is a popular Japanese manga and anime series that has captured the hearts of many around the world. It tells the story of Tanjiro Kamado, a young boy who becomes a demon slayer after his family is slaughtered and his younger sister Nezuko is turned into a demon.</p>
+
+    <h2>The Story</h2>
+    <p>The series is set in Taisho-era Japan and follows Tanjiro's journey as he joins the Demon Slayer Corps, an organization dedicated to hunting down demons and protecting humanity. Along the way, Tanjiro meets other demon slayers and uncovers the mysteries of the demons and their origins.</p>
+
+    <h3>Themes and Reception</h3>
+    <p><em>Demon Slayer</em> is acclaimed for its rich storytelling, unique characters, and stunning animation. It deals with themes of family, perseverance, and the battle between good and evil.</p>
+
+    <h4>Characters</h4>
+
+    <h5>Demon Slayers</h5>
+    <ul class="character-list">
+        <li>
+            Tanjiro Kamado
+            <img src="{{ url_for('static', filename='images/tanjiro.jpeg') }}" alt="Tanjiro Kamado" class="character-img">
+        </li>
+        <li>
+            Nezuko Kamado
+            <img src="{{ url_for('static', filename='images/nezuko.jpeg') }}" alt="Nezuko Kamado" class="character-img">
+        </li>
+        <li>
+            Zenitsu Agatsuma
+            <img src="{{ url_for('static', filename='images/zenitsu.jpeg') }}" alt="Zenitsu Agatsuma" class="character-img">
+        </li>
+        <li>
+            Inosuke Hashibira
+            <img src="{{ url_for('static', filename='images/inosuke.jpeg') }}" alt="Inosuke Hashibira" class="character-img">
+        </li>
+    </ul>
+
+    <h5>Demons</h5>
+    <ul class="character-list">
+        <li>
+            Muzan
+            <img src="{{ url_for('static', filename='images/muzan.jpeg') }}" alt="Muzan" class="character-img">
+        </li>
+        <li>
+            Enmu
+            <img src="{{ url_for('static', filename='images/enmu.jpeg') }}" alt="Enmu" class="character-img">
+        </li>
+    </ul>
+
+    <p>For more detailed information, visit the <a href="https://kimetsu-no-yaiba.fandom.com/wiki/Demon_Slayer_Corps" target="_blank">Demon Slayer Corps Wiki</a>.</p>
+
+    <p>Current time: {{ current_time }}</p>
+    <footer>
+        <p>&copy; 2023 Demon Slayer Fan Site</p>
+    </footer>
+</body>
+</html>

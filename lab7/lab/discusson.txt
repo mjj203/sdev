@@ -1,0 +1,8 @@
+Discussion Directions
+There is one discussion you will need to participate in this week.
+
+Securing websites remains a high priority for all agencies, corporations, and universities.
+The OWASP top ten web application vulnerability list is updated approximately every 3 years.
+Read the most current version (found in the content area for this week) to become familiar with common attacks, vulnerabilities and mitigations.
+
+List 2 of the OWASP top 10 lists that you are particularly interested. Describe the vulnerability and a best practice to mitigate the vulnerability.
