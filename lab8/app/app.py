@@ -203,12 +203,12 @@ def register():
         username = request.form["username"]
         password = request.form["password"]
 
-        if not check_password_complexity(password):
-            flash("Password does not meet complexity requirements")
-            return render_template("register.html")
-
         if is_common_password(password):
             flash("Password is too common, please choose a different one")
+            return render_template("register.html")
+
+        if not check_password_complexity(password):
+            flash("Password does not meet complexity requirements")
             return render_template("register.html")
 
         hashed_password = generate_password_hash(password)
@@ -267,8 +267,12 @@ def login():
                 logging.info("User logged in: %s", username)
                 session["user"] = username
                 return redirect(url_for("index"))
-
-            logging.warning("Failed login attempt for username: %s", username)
+            # Log the failed login attempt with date, time, and IP address
+            logging.warning(
+                "Failed login attempt for username: %s. IP: %s", 
+                username,
+                request.remote_addr
+            )
             flash("Invalid username or password")
         except sqlite3.DatabaseError as db_err:
             logging.error("Database error in login function: %s", db_err)
@@ -292,7 +296,11 @@ def require_login():
     """
     allowed_routes = ["login", "register"]
     if "user" not in session and request.endpoint not in allowed_routes:
-        logging.info("Non-authenticated access attempt to %s", request.endpoint)
+        logging.info(
+            "Non-authenticated access attempt to %s. IP: %s", 
+            request.endpoint,
+            request.remote_addr
+        )
         return redirect(url_for("login"))
 
     return None
